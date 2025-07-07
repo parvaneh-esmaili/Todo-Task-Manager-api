@@ -373,37 +373,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiTodoTaskManagerTodoTaskManager
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'todo_task_managers';
-  info: {
-    displayName: 'Todo-Task-Manager';
-    pluralName: 'todo-task-managers';
-    singularName: 'todo-task-manager';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    date: Schema.Attribute.Date;
-    description: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::todo-task-manager.todo-task-manager'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiTodos2Todos2 extends Struct.CollectionTypeSchema {
   collectionName: 'todos';
   info: {
@@ -944,7 +913,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::todo-task-manager.todo-task-manager': ApiTodoTaskManagerTodoTaskManager;
       'api::todos-2.todos-2': ApiTodos2Todos2;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
